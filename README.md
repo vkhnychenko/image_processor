@@ -17,9 +17,9 @@
 * [docker-compose](https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04-ru)
 
 Создать файл `.env` с настройками:
-* `DEBUG`
-* `SECRET_KEY`
-* `DJANGO_ALLOWED_HOSTS`
+* `DEBUG=1`
+* `SECRET_KEY=secretkey`
+* `DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 0.0.0.0 [::1]`
 
 Выполнить команду:
 * `$docker-compose up --build`
