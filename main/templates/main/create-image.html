@@ -1,0 +1,31 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Новое изображение
+{% endblock %}
+
+{% block content %}
+    <a  href="{% url 'main:index' %}">Назад к списку</a>
+    <h1>Новое изображение</h1>
+    <small>Пришлите ссылку на картинку или прикрепите файл с картинкой к форме.</small>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <label>Ссылка</label>
+            {{ form.url }}
+        </div>
+        <div>
+            <label>Файл</label>
+            {{ form.image }}
+        </div>
+        <button type="submit">Отправить</button>
+    </form>
+        {% for fields, errors in form.errors.items %}
+
+            {% for error in errors %}
+                <div>{{ error }}</div>
+            {% endfor %}
+
+        {% endfor %}
+
+{% endblock %}

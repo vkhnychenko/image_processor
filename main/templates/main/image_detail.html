@@ -1,0 +1,37 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{object.id}}
+{% endblock %}
+
+{% block content %}
+<a href="{% url 'main:index' %}">Назад к списку</a>
+<h1>{{ object.id }}</h1>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <label>Ширина</label>
+        {{ form.width }}
+    </div>
+    <div>
+        <label>Высота</label>
+        {{ form.height }}
+    </div>
+    <button type="submit">Отправить</button>
+</form>
+
+{% for fields, errors in form.errors.items %}
+
+{% for error in errors %}
+<div>{{ error }}</div>
+{% endfor %}
+
+{% endfor %}
+
+<br>
+{% if object.update_image %}
+    <img src="{{ object.update_image.url }}" alt="">
+{% else %}
+    <img src="{{ object.image.url }}" alt="">
+{% endif %}
+{% endblock %}

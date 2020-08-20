@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Список изображений
+{% endblock %}
+
+{% block content %}
+
+    <h1>Список изображений</h1>
+    {% if object_list %}
+        {% for image in object_list %}
+<ul>
+    <li>
+        <a href="{% url 'main:image_detail' image.id %}">{{image.id}}</a>
+    </li>
+</ul>
+
+        {% endfor %}
+    {% else %}
+    <p>Нет доступных изображений</p>
+    {% endif %}
+    <a href="{% url 'main:create_image' %}">Добавить изображение</a>
+
+{% endblock %}
